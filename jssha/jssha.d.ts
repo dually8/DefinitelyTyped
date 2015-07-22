@@ -22,7 +22,7 @@ declare module jsSHA {
          * @param {string=} encoding The text encoding to use to encode the source
          *   string
          */
-        new (srcString:string, inputFormat:string, encoding?:string):jsSHA;
+        new (srcString:string, inputFormat:string, options?:any):jsSHA;
 
         /**
          * Returns the desired SHA hash of the string specified at instantiation
@@ -56,6 +56,40 @@ declare module jsSHA {
          *   specified
          */
         getHMAC(key:string, inputFormat:string, variant:string, outputFormat:string, outputFormatOpts?:OutputFormatOptions):string;
+
+        /**
+         *      BELOW ARE THE UPDATED TYPED DEFINITIONS AS OF 06/15/2015
+         *      YOU'RE WELCOME :)
+         *      - CJ Coffey
+         *
+         *      PS: Feel free to add to it/update the rest.
+         *      https://github.com/Caligatio/jsSHA
+         */
+
+        /**
+         * @constructor
+         * @this{jsSHA}
+         * @param {string} variant The desired SHA variant (SHA-1, SHA-224,
+         *   SHA-256, SHA-384, or SHA-512)
+         * @param {string} inputFormat The format of key, HEX, TEXT, B64, or BYTES
+         */
+        new (variant: string, inputFormat: string): jsSHA;
+
+        /**
+         * Gives jsSHA object a string to work on.
+         * @param {string} srcString The string to be hashed
+         */
+        update(srcString: string);
+
+        /**
+         * Returns the desired SHA hash of the string specified at instantiation
+         * using the specified parameters
+         *
+         * @param {string} outputFormat The format of key, HEX, B64, or BYTES
+         * @return {string} The string representation of the hash in the format
+         *   specified
+         */
+        getHash(outputFormat: string): string;
     }
 }
 

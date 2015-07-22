@@ -5,6 +5,10 @@
 
 /// <reference path="./plugins/keyboard.d.ts" />
 
-interface CordovaPlugins {
+interface Cordova {
+  plugins:Plugins;
+}
+
+interface Plugins {
   Keyboard:Ionic.Keyboard;
 }
